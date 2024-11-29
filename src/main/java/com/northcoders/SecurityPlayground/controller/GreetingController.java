@@ -1,11 +1,9 @@
 package com.northcoders.SecurityPlayground.controller;
 
-import jdk.jfr.ContentType;
-import org.apache.catalina.User;
+import com.northcoders.SecurityPlayground.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1")
 public class GreetingController {
+    @Autowired
+    private UserService oAuth2UserService;              //optional
 // -- /api/v1/open/greeting
     @GetMapping("/open/greeting")
     public String getFormalGreeting(){
