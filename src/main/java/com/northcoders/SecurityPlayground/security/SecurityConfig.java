@@ -19,7 +19,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(req->
                         req.requestMatchers(HttpMethod.GET,"/api/v1/open/greeting").permitAll()
                                 .requestMatchers("/api/v1/protected/greeting").authenticated()
-                ).formLogin(withDefaults());
+                ).oauth2Login(withDefaults());
+                //.formLogin(withDefaults());
         return http.build();
     }
 }
